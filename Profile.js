@@ -1,0 +1,43 @@
+export default Profile = ({ data, setData, errors }) => {
+  const { name, age, email } = data;
+  const handleChangeData = (e, item) => {
+    setData((prevState) => ({
+      ...prevState,
+      [item]: e.target.value,
+    }));
+  };
+
+  return (
+    <div>
+      <div>
+        <label>Name:</label>
+        <input
+          type="text"
+          value={name}
+          onChange={(e) => handleChangeData(e, "name")}
+        />
+        {errors.name && <span className="error">{errors.name}</span>}
+      </div>
+
+      <div>
+        <label>Age:</label>
+        <input
+          type="text"
+          value={age}
+          onChange={(e) => handleChangeData(e, "age")}
+        />
+        {errors.age && <span className="error">{errors.age}</span>}
+      </div>
+
+      <div>
+        <label>Email:</label>
+        <input
+          type="text"
+          value={email}
+          onChange={(e) => handleChangeData(e, "email")}
+        />
+        {errors.email && <span className="error">{errors.email}</span>}
+      </div>
+    </div>
+  );
+};
